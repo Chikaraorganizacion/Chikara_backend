@@ -34,11 +34,11 @@ namespace ChikaraBackend.Controllers.Users
         {
             if (user == null)
             {
-                return BadRequest();
+                return BadRequest("Debe llenar los campos");
             }
             if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest("Invalido");
             }
             var created = await _userRepository.InsertUser(user);
             return Created("creado", created);
@@ -62,7 +62,7 @@ namespace ChikaraBackend.Controllers.Users
         [HttpDelete]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            //await _userRepository.DeleteUser(new User { Id = id });
+            await _userRepository.DeleteUser(new User { user_PK = id });
 
             return NoContent();
         }

@@ -44,30 +44,40 @@ namespace ChikaraBackend.Data.Repositories
         public async Task<bool> InsertUser(User user)
         {
 
-           /* var db = dbConnection();
+            var db = dbConnection();
 
-            var sql = @"CALL insertUsers(@UserName, @Password, @UserCreated, @UserUpdated, @DateCreated, @DateUpdated, @State)";
+            var sql = @"CALL insertUsers(@user_username, @user_password, @user_FK_user_create, @user_FK_user_update, @user_date_create, @user_date_update, @user_FK_states)";
 
-            var result = await db.ExecuteAsync(sql, new { user.UserName, user.Password, user.UserCreated, user.UserUpdated, user.DateCreated, user.DateUpdated, user.State });
+            var result = await db.ExecuteAsync(sql, new { user.user_username, user.user_password, user.user_FK_user_create, user.user_FK_user_update, user.user_date_create, user.user_date_update, user.user_FK_states});
 
-            return result > 0;*/
-            throw new NotImplementedException();
+            return result > 0;
+
+            //throw new NotImplementedException("No se ha actualizado");
         }
 
         public async Task<bool> UpdateUser(User user)
         {
-            /*var db = dbConnection();
+            var db = dbConnection();
 
-            var sql = @"CALL updateUser(@UserName, @Password, @UserCreated, @UserUpdated, @DateCreated, @DateUpdated, @State, @id)";
+            var sql = @"CALL updateUser@user_username, @user_password, @user_FK_user_create, @user_FK_user_update, @user_date_create, @user_date_update, @user_FK_states, @user_PK)";
 
-            var result = await db.ExecuteAsync(sql, new { user.UserName, user.Password, user.UserCreated, user.UserUpdated, user.DateCreated, user.DateUpdated, user.State, user.Id });
+            var result = await db.ExecuteAsync(sql, new { user.user_PK, user.user_username, user.user_password, user.user_FK_user_create, user.user_FK_user_update, user.user_date_create, user.user_date_update, user.user_FK_states });
 
-            return result > 0;*/
-            throw new NotImplementedException();
+            return result > 0;
+            //throw new NotImplementedException();
         }
-        public Task<bool> DeleteUser(User user)
+        public async Task<bool> DeleteUser(User user)
         {
-            throw new NotImplementedException();
+            var db = dbConnection();
+
+            var sql = @"CALL deleteUser(@user_PK)";
+
+            var result = await db.ExecuteAsync(sql, new { user.user_PK });
+
+            return result > 0;
+
+
+            //throw new NotImplementedException();
         }
     }
 }
