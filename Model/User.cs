@@ -18,7 +18,7 @@
 
         public int? State { get; set; }*/
 
-        public int User_PK { get; set; }
+        public int user_PK { get; set; }
 
         public string? user_username { get; set; }
 
